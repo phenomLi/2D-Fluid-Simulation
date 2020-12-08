@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>demo</title>
+<style>
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+#canvas {
+    width: 100%;
+    height: 600px;
+    border: 1px solid #333;
+}
+
+</style>
+</head>
+<body>
+
+<div id="container">
+    <div id="canvas"></div>
+</div>
+
+<div>
+    <button id="btn-toggleStatus">暂停</button>
+</div>
+
+<script src="./dist/fluid.js"></script>
+<script src="./demo.js"></script>
+<script>
+
+const btnToggleStatus = document.getElementById('btn-toggleStatus'),
+      toggleStatus = function() {
+          let status = fluid.getStatus();
+
+          if(status) {
+              fluid.pause();
+          }
+          else {
+              fluid.start();
+          }
+
+          btnToggleStatus.innerHTML = status? '暂停': '开始';
+      };
+
+toggleStatus();
+btnToggleStatus.addEventListener('click', toggleStatus);
+
+</script>
+</body>
+</html>
